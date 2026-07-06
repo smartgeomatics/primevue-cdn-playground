@@ -1,0 +1,113 @@
+/* ============================================================
+   PLAYGROUND LAYOUT
+   Basic page chrome so the components have room to breathe.
+   Feel free to change anything.
+   ============================================================ */
+
+/* Hides the raw template for a split second while the app boots. */
+[v-cloak] {
+    display: none;
+}
+
+body {
+    margin: 0;
+    padding: 2rem clamp(1rem, 5vw, 4rem) 6rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    /* --p-... variables are PrimeVue design tokens. Using them here means
+       the page automatically follows the theme, including dark mode. */
+    background: var(--p-content-background);
+    color: var(--p-text-color);
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+section {
+    margin-top: 3rem;
+    max-width: 70rem;
+}
+
+h2 {
+    border-bottom: 1px solid var(--p-content-border-color);
+    padding-bottom: 0.5rem;
+}
+
+/* horizontal group of controls */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+/* vertical group */
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: 1.25rem 2rem;
+    margin-top: 1rem;
+}
+
+.form-grid > label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+}
+
+label.inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.panel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+    align-items: start;
+}
+
+.hint {
+    text-decoration: underline dotted;
+    cursor: help;
+}
+
+/* ============================================================
+   YOUR EXPERIMENTS
+   PrimeVue styles everything through CSS variables ("design
+   tokens") that start with --p-. Override them here to restyle
+   components globally — open dev tools and inspect any component
+   to discover its tokens.
+
+   Note the doubled :root:root — PrimeVue injects its own styles
+   after this file loads, so we need the extra specificity to win.
+   ============================================================ */
+
+:root:root {
+    /* Try uncommenting these: */
+
+    /* --p-button-border-radius: 999px; */
+    /* --p-primary-color: #e11d48; */
+    /* --p-primary-hover-color: #be123c; */
+    /* --p-content-border-radius: 12px; */
+}
+
+/* You can also target component classes directly. Every PrimeVue
+   component uses p-* class names (inspect in dev tools), e.g.: */
+
+/* .p-card {
+    box-shadow: 0 10px 30px rgb(0 0 0 / 0.15);
+} */

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PrimeVue Playground</title>
+
+    <!-- ============================================================
+         LIBRARIES (loaded from CDN — internet connection required)
+         Versions are pinned so this playground always behaves the same.
+         ============================================================ -->
+    <script src="https://unpkg.com/vue@3.5.39/dist/vue.global.prod.js"></script>
+    <script src="https://unpkg.com/primevue@4.5.5/umd/primevue.min.js"></script>
+
+    <!-- THEME: swap "aura" for "lara", "nora" or "material".
+         If you do, also change the preset name in app.js (see top of that file). -->
+    <script src="https://unpkg.com/@primeuix/themes@1.2.5/umd/aura.js"></script>
+
+    <!-- Icons (used via <i class="pi pi-check"> or icon="pi pi-check" attributes)
+         Full list: https://primevue.org/icons/ -->
+    <link rel="stylesheet" href="https://unpkg.com/primeicons@7.0.0/primeicons.css" />
+
+    <!-- YOUR css — this is where you experiment -->
+    <link rel="stylesheet" href="custom.css" />
+</head>
+<body>
+
+<!-- Everything inside #app is "live": PrimeVue components work here. -->
+<div id="app" v-cloak>
+
+    <header class="page-header">
+        <h1>PrimeVue Playground</h1>
+        <p-button
+            :icon="dark ? 'pi pi-sun' : 'pi pi-moon'"
+            :label="dark ? 'Light mode' : 'Dark mode'"
+            severity="secondary" outlined
+            @click="toggleDark">
+        </p-button>
+    </header>
+
+    <!-- ============================================================
+         BUTTONS  ·  https://primevue.org/button/
+         ============================================================ -->
+    <section>
+        <h2>Buttons</h2>
+        <div class="row">
+            <p-button label="Primary"></p-button>
+            <p-button label="Secondary" severity="secondary"></p-button>
+            <p-button label="Success" severity="success"></p-button>
+            <p-button label="Info" severity="info"></p-button>
+            <p-button label="Warn" severity="warn"></p-button>
+            <p-button label="Danger" severity="danger"></p-button>
+            <p-button label="Contrast" severity="contrast"></p-button>
+        </div>
+        <div class="row">
+            <p-button label="Outlined" outlined></p-button>
+            <p-button label="Text" text></p-button>
+            <p-button label="With icon" icon="pi pi-check"></p-button>
+            <p-button icon="pi pi-search" rounded aria-label="Search"></p-button>
+            <p-button label="Disabled" disabled></p-button>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         FORM INPUTS
+         ============================================================ -->
+    <section>
+        <h2>Form inputs</h2>
+        <div class="form-grid">
+
+            <!-- https://primevue.org/inputtext/ -->
+            <label>
+                <span>Text</span>
+                <p-inputtext v-model="text" placeholder="Type something"></p-inputtext>
+            </label>
+
+            <!-- https://primevue.org/inputnumber/ -->
+            <label>
+                <span>Number</span>
+                <p-inputnumber v-model="amount" show-buttons></p-inputnumber>
+            </label>
+
+            <!-- https://primevue.org/datepicker/ -->
+            <label>
+                <span>Date</span>
+                <p-datepicker v-model="date" show-icon></p-datepicker>
+            </label>
+
+            <!-- https://primevue.org/select/ -->
+            <label>
+                <span>Select</span>
+                <p-select v-model="city" :options="cities" placeholder="Pick a city"></p-select>
+            </label>
+
+            <!-- https://primevue.org/multiselect/ -->
+            <label>
+                <span>Multi select</span>
+                <p-multiselect v-model="selectedCities" :options="cities" placeholder="Pick cities"></p-multiselect>
+            </label>
+
+            <!-- https://primevue.org/textarea/ -->
+            <label>
+                <span>Textarea</span>
+                <p-textarea v-model="description" rows="3" placeholder="Longer text…"></p-textarea>
+            </label>
+
+            <!-- https://primevue.org/slider/ -->
+            <label>
+                <span>Slider ({{ sliderValue }})</span>
+                <p-slider v-model="sliderValue"></p-slider>
+            </label>
+
+            <!-- https://primevue.org/rating/ -->
+            <label>
+                <span>Rating</span>
+                <p-rating v-model="rating"></p-rating>
+            </label>
+
+            <!-- https://primevue.org/selectbutton/ -->
+            <label>
+                <span>Select button</span>
+                <p-selectbutton v-model="size" :options="sizes"></p-selectbutton>
+            </label>
+        </div>
+
+        <div class="row" style="margin-top: 1.5rem">
+            <!-- https://primevue.org/checkbox/ -->
+            <label class="inline">
+                <p-checkbox v-model="checked" binary></p-checkbox>
+                <span>Checkbox</span>
+            </label>
+
+            <!-- https://primevue.org/radiobutton/ -->
+            <label class="inline">
+                <p-radiobutton v-model="radioValue" value="S"></p-radiobutton>
+                <span>Small</span>
+            </label>
+            <label class="inline">
+                <p-radiobutton v-model="radioValue" value="M"></p-radiobutton>
+                <span>Medium</span>
+            </label>
+            <label class="inline">
+                <p-radiobutton v-model="radioValue" value="L"></p-radiobutton>
+                <span>Large</span>
+            </label>
+
+            <!-- https://primevue.org/toggleswitch/ -->
+            <label class="inline">
+                <p-toggleswitch v-model="switchOn"></p-toggleswitch>
+                <span>Toggle switch</span>
+            </label>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         PANELS & LAYOUT
+         ============================================================ -->
+    <section>
+        <h2>Panels</h2>
+        <div class="panel-grid">
+
+            <!-- https://primevue.org/card/ -->
+            <p-card>
+                <template #title>Card title</template>
+                <template #subtitle>Card subtitle</template>
+                <template #content>
+                    <p>Cards group related content. This whole block is a PrimeVue Card component.</p>
+                </template>
+                <template #footer>
+                    <p-button label="Action" size="small"></p-button>
+                </template>
+            </p-card>
+
+            <!-- https://primevue.org/tabs/ -->
+            <p-tabs value="0">
+                <p-tablist>
+                    <p-tab value="0">First</p-tab>
+                    <p-tab value="1">Second</p-tab>
+                    <p-tab value="2">Third</p-tab>
+                </p-tablist>
+                <p-tabpanels>
+                    <p-tabpanel value="0"><p>Content of the first tab.</p></p-tabpanel>
+                    <p-tabpanel value="1"><p>Content of the second tab.</p></p-tabpanel>
+                    <p-tabpanel value="2"><p>Content of the third tab.</p></p-tabpanel>
+                </p-tabpanels>
+            </p-tabs>
+
+            <!-- https://primevue.org/accordion/ -->
+            <p-accordion value="0">
+                <p-accordion-panel value="0">
+                    <p-accordion-header>Section one</p-accordion-header>
+                    <p-accordion-content><p>Accordion content one.</p></p-accordion-content>
+                </p-accordion-panel>
+                <p-accordion-panel value="1">
+                    <p-accordion-header>Section two</p-accordion-header>
+                    <p-accordion-content><p>Accordion content two.</p></p-accordion-content>
+                </p-accordion-panel>
+            </p-accordion>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         OVERLAYS & FEEDBACK
+         ============================================================ -->
+    <section>
+        <h2>Overlays &amp; feedback</h2>
+        <div class="row">
+            <!-- https://primevue.org/dialog/ -->
+            <p-button label="Open dialog" icon="pi pi-window-maximize" @click="dialogVisible = true"></p-button>
+
+            <!-- https://primevue.org/toast/ -->
+            <p-button label="Success toast" severity="success" outlined @click="notify('success')"></p-button>
+            <p-button label="Error toast" severity="danger" outlined @click="notify('error')"></p-button>
+        </div>
+
+        <p-dialog v-model:visible="dialogVisible" header="A dialog" modal style="width: 25rem">
+            <p>Dialogs float above the page. Click outside or the X to close.</p>
+            <template #footer>
+                <p-button label="Close" @click="dialogVisible = false"></p-button>
+            </template>
+        </p-dialog>
+
+        <!-- Toast messages pop up in the corner; this element hosts them. -->
+        <p-toast></p-toast>
+
+        <div class="stack" style="margin-top: 1.5rem">
+            <!-- https://primevue.org/message/ -->
+            <p-message severity="info">This is an info message.</p-message>
+            <p-message severity="warn">This is a warning.</p-message>
+
+            <!-- https://primevue.org/progressbar/ -->
+            <p-progressbar :value="progress"></p-progressbar>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         DATA & MISC
+         ============================================================ -->
+    <section>
+        <h2>Data</h2>
+
+        <!-- https://primevue.org/datatable/ -->
+        <p-datatable :value="products" striped-rows>
+            <p-column field="name" header="Product"></p-column>
+            <p-column field="category" header="Category"></p-column>
+            <p-column field="price" header="Price"></p-column>
+            <p-column header="Status">
+                <template #body="slotProps">
+                    <p-tag :value="slotProps.data.status"
+                           :severity="slotProps.data.status === 'In stock' ? 'success' : 'danger'"></p-tag>
+                </template>
+            </p-column>
+        </p-datatable>
+
+        <div class="row" style="margin-top: 1.5rem">
+            <!-- https://primevue.org/avatar/  https://primevue.org/badge/  https://primevue.org/chip/  https://primevue.org/tag/ -->
+            <p-avatar label="SW" shape="circle" size="large"></p-avatar>
+            <p-badge value="8"></p-badge>
+            <p-chip label="A chip" icon="pi pi-user"></p-chip>
+            <p-tag value="A tag" severity="info"></p-tag>
+            <span v-tooltip="'I am a tooltip'" class="hint">Hover me for a tooltip</span>
+        </div>
+    </section>
+
+</div><!-- /#app -->
+
+<!-- The Vue app: sample data + component registration. -->
+<script src="app.js"></script>
+</body>
+</html>
