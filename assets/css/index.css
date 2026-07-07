@@ -1,0 +1,6 @@
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/@layer */
+@layer reset, base;
+
+@import url('./colors.css');
+@import url('./reset.css') layer(reset);
+@import url('./base.css') layer(base);

@@ -1,0 +1,61 @@
+/* Adapted from https://www.joshwcomeau.com/css/custom-css-reset/ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    line-height: 1.5;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+p {
+    /* stylelint-disable-next-line plugin/use-baseline -- progressive enhancement, ignored by unsupporting browsers */
+    text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    /* stylelint-disable-next-line plugin/use-baseline -- progressive enhancement, ignored by unsupporting browsers */
+    text-wrap: balance;
+}
+
+/* #app is this playground's root element (mirrors #__nuxt in the real Nuxt app) */
+#app {
+    isolation: isolate;
+}
