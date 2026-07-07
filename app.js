@@ -97,6 +97,7 @@ app.directive('tooltip', PrimeVue.Tooltip);
 
 // buttons & inputs
 app.component('p-button',       PrimeVue.Button);
+app.component('p-buttongroup',  PrimeVue.ButtonGroup);
 app.component('p-inputtext',    PrimeVue.InputText);
 app.component('p-textarea',     PrimeVue.Textarea);
 app.component('p-inputnumber',  PrimeVue.InputNumber);
