@@ -27,7 +27,25 @@
 
     <!-- YOUR css — this is where you experiment -->
     <link rel="stylesheet" href="custom.css" />
+
+    <!-- Testwise CDN-Einbindung Open Sans-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">	
+	<style>
+		body {
+		  font-family: "Open Sans", sans-serif;
+		  font-optical-sizing: auto;
+		  font-variation-settings:"wdth" 100;
+		  }
+	</style>
+	<!-- Ende CDN-Einbindung Open Sans-->
+
 </head>
+
+
+
+
 <body>
 
 <!-- Everything inside #app is "live": PrimeVue components work here. -->
@@ -63,6 +81,28 @@
             <p-button label="With icon" icon="pi pi-check"></p-button>
             <p-button icon="pi pi-search" rounded aria-label="Search"></p-button>
             <p-button label="Disabled" disabled></p-button>
+        </div>
+    </section>
+
+    <section>
+        <h2>Additional Buttons by Phil</h2>
+        <div class="row">
+            <p-button label="Link" link></p-button>
+            <!-- laut m. Recherche sollten Icon-Buttons aus Accessibility-Gründen aria-labels haben-->
+            <p-button icon="pi pi-check" aria-label="Submit"></p-button>
+            <p-button icon="pi pi-check" aria-label="Submit" iconPos="right" rounded></p-button>
+            <p-button label="Help" severity="help"></p-button>
+            <p-button label="Contrast" severity="contrast" raised></p-button>
+            <p-button type="button" label="Emails" badge="2"></p-button>
+            
+            <p-button type="button" label="Messages" icon="pi pi-users" badge="2" badgeSeverity="contrast" outlined></p-button>
+		
+            <!-- p-buttonGroup funzt noch nicht, muss ggf. initialisiert werden?-->
+            <p-button-group>
+                <p-button label="Save" icon="pi pi-check"></p-button>
+                <p-button label="Delete" icon="pi pi-trash"></p-button>
+                <p-button label="Cancel" icon="pi pi-times"></p-button>
+            </p-button-group>
         </div>
     </section>
 
