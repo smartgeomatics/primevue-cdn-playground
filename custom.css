@@ -119,30 +119,12 @@ label.inline {
     --p-form-field-lg-padding-y: .5em;
 
     --p-button-label-font-weight: 500;
-    --p-border-radius-md: 6px;
+    --p-border-radius-md: 8px;
 
     --p-form-field-font-size: 1rem;
     --p-form-field-lg-font-size: 1.25rem;
-    --p-form-field-sm-font-size: 0.875rem;
-
-    /* Standard 
-		.p-button {
-			border-radius: 4px;
-			padding: .75rem 1rem;
-			font-weight: 600;
-			font-size:1rem
-			transition: all .2s ease;
-		}
-		
-		.p-button-sm {}
-		.p-button-lg {}
-        */
+    --p-form-field-sm-font-size: 0.875rem;    
 }
-
-    .p-button {font-size:1rem;line-height:1.375rem;}
-    .p-button-sm {line-height:1rem;}
-    .p-button-lg {line-height:1.625rem;}
-
 
 /* You can also target component classes directly. Every PrimeVue
    component uses p-* class names (inspect in dev tools), e.g.: */
@@ -150,3 +132,31 @@ label.inline {
 /* .p-card {
     box-shadow: 0 10px 30px rgb(0 0 0 / 0.15);
 } */
+
+    /* Höhen von Buttons und Inputs sind nicht einheitlich über Variablen steuerbar, insofern u. g. ergänzende Anpassungen */
+    .p-button {
+        line-height:1.375rem;
+    }
+
+    .p-button-sm {
+        line-height:1rem;
+    }
+
+    .p-button-lg {
+        line-height:1.625rem;
+    }
+
+    .p-inputtext {
+        height:40px;
+    }
+
+    .p-inputtext-sm {
+        height:32px;
+    }
+
+    .p-inputtext-lg {
+        height:48px;
+    }
+
+
+
