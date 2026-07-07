@@ -43,9 +43,6 @@
 
 </head>
 
-
-
-
 <body>
 
 <!-- Everything inside #app is "live": PrimeVue components work here. -->
@@ -94,7 +91,7 @@
     </section>
 
     <section>
-        <h2>Additional Buttons by Phil</h2>
+        <h2>Additional Button Variants by Phil</h2>
         <div class="row">
             <p-button label="Link" link></p-button>
             <!-- laut m. Recherche sollten Icon-Buttons aus Accessibility-Gründen aria-labels haben-->
@@ -105,6 +102,14 @@
             <p-button type="button" label="Emails" badge="2"></p-button>
             
             <p-button type="button" label="Messages" icon="pi pi-users" badge="2" badgeSeverity="contrast" outlined></p-button>
+    </section>
+    
+    <section>
+        <div class="row">
+            <!-- Button-Sizes-->
+            <p-button label="Link" size="small"></p-button>
+            <p-button label="Link"></p-button>
+            <p-button label="Link" size="large"></p-button>
 		
         </div>
     </section>
@@ -119,13 +124,13 @@
             <!-- https://primevue.org/inputtext/ -->
             <label>
                 <span>Text</span>
-                <p-inputtext v-model="text" placeholder="Type something"></p-inputtext>
+                <p-inputtext v-model="text" placeholder="Type something" size="large"></p-inputtext>
             </label>
 
             <!-- https://primevue.org/inputnumber/ -->
             <label>
                 <span>Number</span>
-                <p-inputnumber v-model="amount" show-buttons></p-inputnumber>
+                <p-inputnumber v-model="amount" show-buttons size="small"></p-inputnumber>
             </label>
 
             <!-- https://primevue.org/datepicker/ -->

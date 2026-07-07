@@ -9,6 +9,10 @@
     display: none;
 }
 
+html {
+    font-size:16px;
+}
+
 body {
     margin: 0;
     padding: 2rem clamp(1rem, 5vw, 4rem) 6rem;
@@ -103,7 +107,43 @@ label.inline {
     /* --p-primary-color: #e11d48; */
     /* --p-primary-hover-color: #be123c; */
     /* --p-content-border-radius: 12px; */
+
+    /* --p-button-padding leads back to */
+    --p-form-field-padding-x: .75em;
+    --p-form-field-padding-y: .5em;
+
+    --p-form-field-sm-padding-x: .75em;
+    --p-form-field-sm-padding-y: .5em;
+
+    --p-form-field-lg-padding-x: .75em;
+    --p-form-field-lg-padding-y: .5em;
+
+
+    --p-button-label-font-weight: 500;
+    --p-border-radius-md: 6px;
+
+    --p-form-field-font-size: 1rem;
+    --p-form-field-lg-font-size: 1.25rem;
+    --p-form-field-sm-font-size: 0.875rem;
+
+    /* Standard 
+		.p-button {
+			border-radius: 4px;
+			padding: .75rem 1rem;
+			font-weight: 600;
+			font-size:1rem
+			transition: all .2s ease;
+		}
+		
+		.p-button-sm {}
+		.p-button-lg {}
+        */
 }
+
+    .p-button {font-size:1rem;line-height:1.25rem;}
+    .p-button-sm {line-height:1rem;}
+    .p-button-lg {line-height:1.25rem;}
+
 
 /* You can also target component classes directly. Every PrimeVue
    component uses p-* class names (inspect in dev tools), e.g.: */
