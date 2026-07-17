@@ -43,11 +43,11 @@
 
 
 		/* =====================================
-		   Hilfscontainer
+		   Hilfscontainer für verschiedene Binnenlayouts
 		   Type Areas + Satzspiegel
 		===================================== */
-
-		.lay-helper {
+		
+		.main-layout-map {
 			display: grid;
 			grid-template-columns:
 				56px
@@ -55,7 +55,6 @@
 				56px;
 			min-height: 0;
 		}
-
 
 		/* =====================================
 		   Type Areas
@@ -95,24 +94,18 @@
 		===================================== */
 
 		.left-sidebar {
-
 			grid-column: col-start 1 / span 2;
-
 			background: #cfe2f3;
 		}
 
 		.main {
-
 			grid-column: col-start 3 / span 8;
-
 			background: #fff;
 
 		}
 
 		.right-sidebar {
-
 			grid-column: col-start 11 / span 2;
-
 			background: #cfe2f3;
 		}
 	</style>
@@ -121,13 +114,13 @@
 </head>
 <body>
 
-	<div class="layout"><!--style="margin-left:50vw;width:100vw"-->
+	<div class="layout">
 
         <header class="header">
             Header
         </header>
-		
-		<div class="lay-helper">
+			
+		<div class="main-layout-map">
 		
 			<!-- linke Type Area -->
 			<aside class="type-area type-area-left">
@@ -156,7 +149,7 @@
 			</aside>
 		
 		</div>
-
+			
         <footer class="footer">
             Footer
         </footer>

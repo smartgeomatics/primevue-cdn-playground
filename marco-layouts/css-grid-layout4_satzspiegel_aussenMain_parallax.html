@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-Column Layout mit Type Areas</title>
+
+    <link rel="stylesheet" href="styles.css">
+	
+	
+	<style>
+
+
+		html,
+		body {
+			height: 100%;
+			padding:0;
+			margin:0;
+		}
+
+		/* =====================================
+		   Gesamtlayout
+		===================================== */
+
+		.layout {
+			min-height: 100%;
+			display: grid;
+			grid-template-rows:
+				auto
+				1fr
+				auto;
+		}
+
+
+		/* =====================================
+		   Header / Footer
+		===================================== */
+
+		.header,
+		.footer {
+			background: #444;
+			}
+
+
+		/* =====================================
+		   Hilfscontainer für verschiedene Binnenlayouts
+		   Type Areas + Satzspiegel
+		===================================== */
+		
+		.wrapper {
+			display: grid;
+			grid-template-columns: 100vw 100vw;
+			width: 100vw;
+			transition: transform 0.5s ease;
+		}
+		
+			.wrapper.wrapper-parallax-shift-map {
+				transform: translateX(-50vw);
+			}
+		
+		.main-layout-map {
+			display: grid;
+			grid-template-columns:
+				56px
+				minmax(0, 1fr)
+				56px;
+			min-height: 0;
+		}
+		
+		.main-layout-data {
+			display: grid;
+			grid-template-columns:
+				minmax(0, 1fr)
+			min-height: 0;
+			background:red;
+		}
+
+		/* =====================================
+		   Type Areas
+		===================================== */
+
+		.type-area {
+			display: flex;
+			justify-content: center;
+			align-items: top;
+			background: #ececec;
+		}
+
+		.type-area-left {
+			grid-column: 1;
+		}
+
+		.type-area-right {
+			grid-column: 3;
+		}
+
+
+		/* =====================================
+		   Satzspiegel
+		===================================== */
+
+		.content {
+			grid-column: 2;
+			display: grid;
+			grid-template-columns:repeat(12, [col-start] 1fr);
+			gap: 1rem;
+			min-width: 0;
+		}
+
+
+		/* =====================================
+		   12er Raster
+		===================================== */
+
+		.left-sidebar {
+			grid-column: col-start 1 / span 2;
+			background: #cfe2f3;
+		}
+
+		.main {
+			grid-column: col-start 3 / span 8;
+			background: #fff;
+
+		}
+
+		.right-sidebar {
+			grid-column: col-start 11 / span 2;
+			background: #cfe2f3;
+		}
+	</style>
+	
+	
+</head>
+<body>
+
+	<div class="layout">
+
+        <header class="header">
+            Header
+        </header>
+		
+		<div class="wrapper wrapper-parallax-shift-map">
+			
+			<div class="main-layout-map">
+			
+				<!-- linke Type Area -->
+				<aside class="type-area type-area-left">
+					Type
+				</aside>
+
+				<main class="content">
+
+					<aside class="left-sidebar">
+						Left Sidebar
+					</aside>
+
+					<section class="main">
+						Main Content
+					</section>
+
+					<aside class="right-sidebar">
+						Right Sidebar
+					</aside>
+
+				</main>
+				
+				<!-- rechte Type Area -->
+				<aside class="type-area type-area-right">
+					Type
+				</aside>
+			
+			</div>
+			
+			<div class="main-layout-data">yxcyc</div>
+			
+		</div>
+
+        <footer class="footer">
+            Footer
+        </footer>
+    
+	</div>
+
+</body>
+</html>
