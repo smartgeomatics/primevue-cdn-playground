@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-Column Layout mit Type Areas</title>
+
+    <link rel="stylesheet" href="styles.css">
+	
+	
+	<style>
+
+
+		html,
+		body {
+			height: 100%;
+		}
+
+
+		/* =====================================
+		   Seitenlayout
+		===================================== */
+
+		.layout {
+			display: grid;
+			height: 100%;
+			grid-template-columns:
+				56px
+				minmax(0, 1fr)
+				56px;
+		}
+
+
+		/* =====================================
+		   Type Areas
+		===================================== */
+
+		.type-area {
+			background: red;
+			display: flex;
+			justify-content: center;
+			align-items: top;
+		}
+
+		.type-area-left {
+			grid-column: 1;
+		}
+
+		.type-area-right {
+			grid-column: 3;
+
+		}
+
+
+		/* =====================================
+		   Satzspiegel
+		===================================== */
+
+		.page {
+			grid-column: 2;
+			display: grid;
+			grid-template-rows:
+				auto
+				1fr
+				auto;
+			min-width: 0;
+		}
+
+
+		/* =====================================
+		   Header / Footer
+		===================================== */
+
+		.header,
+		.footer {
+			background: #444;
+		}
+
+
+		/* =====================================
+		   Main (12-Spalten-Raster)
+		===================================== */
+
+		.content {
+			display: grid;
+			grid-template-columns: repeat(12, [col-start] 1fr);
+			gap: 1rem;
+		}
+
+
+		/* =====================================
+		   12er Rasterbelegung
+		===================================== */
+
+		.left-sidebar {
+			grid-column: col-start 1 / span 3;
+			background: #cfe2f3;
+		}
+
+		.main {
+			grid-column: col-start 4 / span 6;
+			background: white;
+		}
+
+		.right-sidebar {
+			grid-column: col-start 10 / span 3;
+			background: #cfe2f3;
+		}
+	</style>
+	
+	
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- linke Type Area -->
+    <aside class="type-area type-area-left">
+        Type
+    </aside>
+
+    <!-- Satzspiegel -->
+    <div class="page">
+
+        <header class="header">
+            Header
+        </header>
+
+        <main class="content">
+
+            <aside class="left-sidebar">
+                Left Sidebar
+            </aside>
+
+            <section class="main">
+                Main Content
+            </section>
+
+            <aside class="right-sidebar">
+                Right Sidebar
+            </aside>
+
+        </main>
+
+        <footer class="footer">
+            Footer
+        </footer>
+
+    </div>
+
+    <!-- rechte Type Area -->
+    <aside class="type-area type-area-right">
+        Type
+    </aside>
+
+</div>
+
+</body>
+</html>

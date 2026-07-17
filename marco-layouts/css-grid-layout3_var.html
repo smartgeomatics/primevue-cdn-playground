@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12er CSS Grid Layout</title>
+	
+	<style>
+		html,
+		body {
+			height: 100%;
+			font-family: Arial, Helvetica, sans-serif;
+			padding:0;
+			margin:0;
+		}
+
+		/* ==========================
+		   Gesamtlayout-Grid - 12er-Raster über komplette Breite und Höhe des Satzspiegels
+		   ========================== */
+
+		.layout-raster {
+			display: grid;
+			gap:1rem;
+			grid-template-columns: repeat(12, [col-start] 1fr);
+			height: 100vh;
+			grid-template-rows:minmax(40px, auto) 1fr minmax(80px, auto); /* beschreiben die Höhen header, main und footer*/
+				/*hier könnten die Höhe von Header und Footer angepasst werden, um z. B. Flyout abzubilden bzw. inhaltsagnostisch zu sein oder menü-fade-out zu simulieren*/
+		}
+
+		/* ==========================
+		   Header / Footer
+		   ========================== */
+
+		.header {
+			grid-row: 1;
+			grid-column: col-start 1 / span 12;
+			padding: 0;
+			background: #444;
+			color: #fff;
+		}
+
+		.footer {
+			grid-row: 3;
+			grid-column: col-start 1 / span 12;
+			padding: 0;
+			background: #444;
+			color: #fff;	
+/* Einfache Möglichkeit, Header und Footer sowie potenziell Flyout-Menüs aus dem Grid-Fluss rauszulösen und fix zu positionieren - z. B. aus-, ein- und überblenden */
+			position:fixed;
+			bottom:0;
+			right:0;
+			left:0;
+			min-height:80px;
+		}
+
+
+		/* ==========================
+		   Main
+		   ========================== */
+
+		.content {
+			grid-row: 2;
+			grid-column: col-start 1 / span 12;
+			padding: 0;
+		/* ab hier Integration eines Binnen-Rasters, da ggf. mehr Flexibilität */
+			display: grid;
+			grid-template-columns: repeat(12, [col-start] 1fr);
+			gap: 1rem;
+		}
+
+		.content aside.left-sidebar-type-area, 
+		.content aside.left-sidebar,
+		.content section.main, 
+		.content aside.right-sidebar-type-area, 
+		.content aside.right-sidebar {
+			grid-column: col-start / span 12;
+			background: #ddd;
+		}
+		
+		@media (min-width: 480px) {
+			.content aside.left-sidebar-type-area, 
+			.content aside.left-sidebar,
+			.content section.main, 
+			.content aside.right-sidebar-type-area, 
+			.content aside.right-sidebar {
+				grid-column: col-start / span 12;
+				background: #ddd;
+			}
+			
+			.content aside.left-sidebar {
+				grid-column: col-start / span 6;
+				background: #ddd;
+			}
+			
+			.content section.main {
+				grid-column: col-start 7 / span 6;
+				background: #ddd;
+			}
+		}
+		
+		@media (min-width: 768px) {
+
+			/* ==========================
+			   Rasterbelegung
+			   ========================== */
+
+			.content aside.left-sidebar-type-area {
+				grid-column: col-start 1 / span 1;
+				/*min-width:80px;*/
+			}
+
+			.content aside.left-sidebar {
+				grid-column: col-start 2 / span 3;
+			}
+
+			.content section.main {
+				grid-column: col-start 5 / span 5;
+			}
+
+			.content aside.right-sidebar {
+				grid-column: col-start 10 / span 3;
+			}
+
+			.content aside.right-sidebar-type-area {
+				grid-column: col-start 12 / span 1;
+				/*min-width:80px;*/
+				display:none;
+			}
+		}
+		
+		@media (min-width: 1280px) {
+
+			/* ==========================
+			   Rasterbelegung
+			   ========================== */
+			   
+			.content aside.left-sidebar {
+				grid-column: col-start 2 / span 2;
+			}
+
+			.content section.main {
+				grid-column: col-start 4 / span 6;
+			}
+
+			.content aside.right-sidebar {
+				grid-column: col-start 10 / span 2;
+			}
+			
+			.content aside.right-sidebar-type-area {
+				grid-column: col-start 12 / span 1;
+				/*min-width:80px;*/
+				display:block;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="layout-raster">
+
+		<header class="header">
+			Header
+		</header>
+
+		<main class="content">
+
+			<aside class="left-sidebar-type-area">
+				Add. Left Sidebar (Raster-integrierter Satzspiegel für vertikale Menüs etc.)
+			</aside>
+
+			<aside class="left-sidebar">
+				Left Sidebar
+			</aside>
+
+			<section class="main">
+				Main Content
+			</section>
+
+			<aside class="right-sidebar">
+				Right Sidebar
+			</aside>
+
+			<aside class="right-sidebar-type-area">
+				Add. Right Sidebar (Raster-integrierter Satzspiegel für vertikale Menüs etc.)
+			</aside>
+		</main>
+
+		<footer class="footer">
+			Footer
+		</footer>
+
+	</div>
+	
+</body>
+</html>

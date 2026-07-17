@@ -1,0 +1,63 @@
+<html>
+<head>
+	<style>
+
+		html, body {
+			height:100%;
+			padding:0;
+			margin:0;
+		}
+			
+		.container {
+			background-color: dodgerblue;
+			height: calc(100% - 0px);
+			padding: 0 1rem;
+			display: grid;
+			grid-gap: 1rem;
+			grid-template-columns: 1fr 2fr 1fr;
+			grid-template-rows: auto 1fr auto;
+			grid-template-areas:
+			"header header header"
+			"sidebar-left main sidebar-right"
+			"footer footer footer";
+		}
+		.container div {
+			background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+			border: 0px solid rgba(255, 255, 255, 0.3);
+			border-radius: 8px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		}
+
+		.container div.header {
+			grid-area: header;
+		}
+
+		.container div.sidebar-left {
+			grid-area: sidebar-left;
+		}
+
+		.container div.main {
+			grid-area: main;
+		}
+		.container div.sidebar-right {
+			grid-area: sidebar-right;
+		}
+		.container div.footer {
+			grid-area: footer;
+		}
+
+	</style>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="header">1</div>
+		<div class="sidebar-left">2</div>
+		<div class="main">3</div>
+		<div class="sidebar-right">2</div>
+		<div class="footer">3</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+Primevue-Button-Klassen
+
+--p-button-padding
+--p-button-icon-only-width
+--p-button-icon-only-padding
+--p-button-border-radius
+--p-button-raised-shadow
+--p-outlined-button-border
+--p-text-button-hover-bg-opacity
+--p-text-button-active-bg-opacity
+
+
+State TokensTokens for interaction states like hover, active (pressed), and focus:
+
+--p-button-bg
+--p-secondary-button-bg
+--p-button-text-Color
+--p-secondary-button-text-color
+--p-button-border-Color
+--p-secondary-button-border-color
+--p-button-hover-bg
+--p-secondary-button-hover-bg
+--p-button-text-hover-Color
+--p-secondary-button-text-hover-color
+--p-button-hover-border-color
+--p-secondary-button-hover-border-color
+--p-button-active-bg
+--p-secondary-button-active-bg
+--p-button-text-active-Color
+--p-secondary-button-text-active-color
+--p-button-active-border-color
+--p-secondary-button-active-border-color
+--p-button-focus-shadow
+--p-secondary-button-focus-shadow
+
+
+Contextual Button Tokens PrimeVue also provides specific tokens for contextual variants (success, info, warning, help, danger):
+
+Success Tokens:
+
+--p-success-button-bg
+--p-success-button-text-Color
+--p-success-button-border-Color
+--p-success-button-hover-bg
+--p-success-button-active-bg
+
+Info Tokens:
+--p-info-button-bg
+--p-info-button-text-Color
+--p-info-button-border-Color
+--p-info-button-hover-bg
+--p-info-button-active-bg
+
+Warning Tokens:
+--p-warning-button-bg
+--p-warning-button-text-Color
+--p-warning-button-border-Color
+--p-warning-button-hover-bg
+--p-warning-button-active-bg
+
+...

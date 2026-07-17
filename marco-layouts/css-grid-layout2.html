@@ -1,0 +1,100 @@
+<html>
+<head>
+	<style>
+
+		html, body {
+			/*height:100%;*/
+		}
+				
+		html {
+			font-size:16px;
+		}
+
+		body {
+			margin: 0;
+			padding: 2rem clamp(1rem, 5vw, 4rem) 6rem;
+			
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+			background: var(--p-content-background);
+			color: var(--p-text-color);
+			
+			/*background-image: url(assets/1.png);
+			background-position: center center;
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+			background-size: cover;*/
+		}
+					
+		.container {
+			height: calc(100% - 0px);
+			padding: 0 1rem;
+			display: grid;
+			grid-gap: 1rem;
+			/*grid-template-columns: 1fr 2fr 1fr;*/
+			grid-template-columns: repeat(12, [col-start] 1fr);
+			/*grid-template-rows: auto 1fr auto;*/
+			/*grid-template-areas:
+			"header header header"
+			"sidebar-left main sidebar-right"
+			"footer footer footer";*/
+		}
+
+		.container div {
+			border: 0px solid rgba(255, 255, 255, 0.3);
+			border-radius: 8px;
+			background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+			grid-column: col-start / span 12;
+		}
+
+		@media (min-width: 768px) {
+			.container div.header {
+				/*grid-area: header;*/
+				grid-column: col-start / span 12;
+				background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+				background-color: dodgerblue;
+			}
+
+			.container div.sidebar-left {
+				/*grid-area: sidebar-left;*/
+				grid-column: col-start / span 3;
+			}
+
+			.container div.main {
+				/*grid-area: main;*/
+				grid-column: col-start 4 / span 6;
+			}
+			.container div.sidebar-right {
+				/*grid-area: sidebar-right;*/
+				grid-column: col-start 10 / span 3;
+			}
+			.container div.footer {
+				/*grid-area: footer;*/
+				grid-column: col-start / span 12;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="container">
+	
+		<div class="header"></div>
+		
+		<div class="sidebar-left"></div>
+		
+		<div class="main"></div>
+		
+		
+		<div class="sidebar-right"></div>
+		<div class="footer"></div>
+
+  
+
+    
+
+</div>
+
+</body>
+</html>
