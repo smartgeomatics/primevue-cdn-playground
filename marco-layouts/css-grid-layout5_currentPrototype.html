@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-Column Layout mit Type Areas</title>
+	
+	<style>
+		html, body {
+			height: 100%;
+			padding:0;
+			margin:0;
+			overflow: hidden;
+		}
+
+		/* =====================================
+		   Gesamtlayout (volle Breite, 3 flexible rows (Header/Main/Footer) über volle Höhe)
+		===================================== */
+
+		.layout {
+			display: grid;
+			grid-template-rows:
+				auto 
+				minmax(0,1fr) 
+				auto;
+			height: 100dvh;
+			
+			/* Ergänzungen zur Kartenüberlagerung des Layouts - "pointer-events:auto" müssen so später für jeden Bereich individuell aktiviert werden, alle andere sind "click-through"*/
+			position:relative;
+			z-index:2;
+			pointer-events:none;
+		}
+		
+		/* Header und Footer potenziell ausgeblendet */ 
+		.layout.layout-fullheight {
+			grid-template-rows:
+				0
+				minmax(0,1fr)
+				0;
+		}
+
+		.layout-fullheight .header,
+		.layout-fullheight .footer {
+			overflow:hidden;
+		}
+
+
+		/* =====================================
+		   Header / Footer
+		===================================== */
+
+		.header,
+		.footer {
+			background: rgba(255,255,255,0.35);
+			}
+			
+
+		/* =====================================
+		   Hilfscontainer .wrapper für Integration verschiedener Binnenlayouts
+		   Type Areas + Satzspiegel
+		===================================== */
+		
+		.wrapper {
+			display: grid;
+			grid-template-columns: 100vw 100vw;
+			height: 100%;
+			width: 100vw;
+			transition: transform 0.5s ease;
+			min-height: 0;
+			grid-template-rows: minmax(0,1fr);
+		}
+			
+		.wrapper.wrapper-parallax-shift-map {
+			transform: translateX(0vw);
+			animation: shiftX 1.3s ease-in-out forwards;
+			animation-delay: 0.3s;
+		}
+		
+		@keyframes shiftX {
+			to {
+				transform: translateX(-100vw);
+			}
+		}
+		
+		.main-layout-map {
+			display: grid;
+			grid-template-columns:
+				56px
+				minmax(0, 1fr)
+				56px;
+			min-height: 0;
+			/*overflow:auto;*/
+			grid-template-rows:minmax(0,1fr);
+			height:100%;
+		}
+		
+		.main-layout-data {
+			display: grid;
+			grid-template-columns:
+				56px
+				minmax(0, 1fr)
+				56px;
+			min-height: 0;
+			/*background:red;*/
+			grid-template-rows:minmax(0,1fr);
+		}
+		
+		.main-layout-data .content {
+			display: grid;
+			grid-template-columns:repeat(12,minmax(0,1fr));
+			gap: 1rem;
+			grid-template-rows:minmax(0,1fr);
+			min-height: 0;
+			min-width:0;
+		}
+
+		/* =====================================
+		   Type Areas
+		===================================== */
+
+		.type-area-left {
+			grid-column: 1;
+			padding-top:0.5rem;
+			justify-content: center;
+			text-align:center;
+		}
+		
+		.type-area-left button {
+			margin-bottom:0.5rem;
+		}
+
+		.type-area-right {
+			grid-column: 3;
+		}
+
+
+		/* =====================================
+		   Satzspiegel
+		===================================== */
+
+		.content {
+			grid-column: 2;
+			display: grid;
+			grid-template-columns:repeat(12,minmax(0,1fr));
+			gap: 1rem;
+			grid-template-rows: auto minmax(0, 1fr) minmax(0, 1fr);
+			min-height: 0;
+			min-width:0;
+		}
+		
+		.left-sidebar,
+		.main, 
+		.right-sidebar {
+			grid-column: 1 / span 12;
+			min-height: 0;
+			overflow:auto;
+			padding:1rem 0;
+		}
+		
+		@media (min-width: 480px) {
+		
+			.content {
+				grid-template-rows: auto minmax(0, 1fr);
+			}
+		
+			.left-sidebar,
+			.main, 
+			.right-sidebar {
+				grid-column: 1 / span 12;
+			}
+			
+			.left-sidebar {
+				grid-column: 1 / span 6;
+			}
+			
+			.main {
+				grid-column: 7 / span 6;
+			}
+		}
+		
+		@media (min-width: 768px) {
+		
+			.content {
+				grid-template-rows: minmax(0, 1fr);
+			}
+
+			.left-sidebar {
+				grid-column: 1 / span 4;
+			}
+
+			.main {
+				grid-column: 5 / span 3;
+			}
+
+			.right-sidebar {
+				grid-column: 8 / span 5;
+			}
+		}
+		
+		@media (min-width: 1024px) {
+
+			.left-sidebar {
+				grid-column: 1 / span 3;
+			}
+
+			.main {
+				grid-column: 4 / span 5;
+			}
+
+			.right-sidebar {
+				grid-column: 9 / span 4;
+			}
+		 }
+		
+		@media (min-width: 1280px) {
+
+			.left-sidebar {
+				grid-column: 1 / span 3;
+			}
+
+			.main {
+				grid-column: 4 / span 6;
+			}
+
+			.right-sidebar {
+				grid-column: 10 / span 3;
+			}
+		}
+		
+		@media (min-width: 1440px) {
+		
+			.content {
+				grid-template-rows: minmax(0, 1fr);
+			}
+
+			.left-sidebar {
+				grid-column: 1 / span 2;
+			}
+
+			.main {
+				grid-column: 3 / span 7;
+			}
+
+			.right-sidebar {
+				grid-column: 10 / span 3;
+			}
+			
+			.main-layout-map, .main-layout-data {
+				grid-template-columns:
+					64px
+					minmax(0, 1fr)
+					64px;
+			}
+		}
+		
+	</style>
+</head>
+
+<body>
+
+<!-- .map ist nurn dummie für das Fullscreenlayout der reinen Karte/nanwendung-->
+	<div class="map" style="position:fixed;inset: 0;left:0%;top:0%;height:100%;width:100%;z-index:1;background-image: url(1.png);">
+	<!-- Zum Klick-Through-Bereich testen mit fullscreen-Button-->
+		<!--<a class="p-button" href="index_aura_blent-in.html" style="position:absolute;left:0%;bottom:0%;width:100%;height:100%;background:blue;">Blend in</a>-->
+	</div>
+	
+<!-- .layout ist das kartenüberlagernde Layout (im 12er-Raster) zur späteren Intgration aller sonstigen Komponenten (Legende (controls,infos) etc.)-->
+	<div class="layout">
+        <header class="header" style="pointer-events: auto;">header</header>
+		<div id="wrapper" ><!--class="wrapper wrapper-parallax-shift-map"-->
+			<div class="main-layout-map">
+				<!-- linke Type Area -->
+				<aside class="type-area type-area-left">Type Area / Map Menü</aside>
+				<main class="content">
+					<aside class="left-sidebar">Legend Control</aside>
+					<section class="main">Main</section>
+					<aside class="right-sidebar">Legend Info</aside>
+				</main>
+				<!-- rechte Type Area -->
+				<aside class="type-area type-area-right">Type Area / User Menü</aside>
+			</div>
+			<div class="main-layout-data">yxcyc</div>
+		</div>
+        <footer class="footer" style="pointer-events: aut;">Footer</footer>
+   
+	</div>
+
+</body>
+</html>
